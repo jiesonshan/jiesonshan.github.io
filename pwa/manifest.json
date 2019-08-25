@@ -1,6 +1,6 @@
 {
-  "name": "BY Blog",
-  "short_name": "BY Blog",
+  "name": "Jiesonshan Blog",
+  "short_name": "JS Blog",
   "description": "A personal blog by engineer",
   "icons": [{
     "src": "icons/pwa_icon_128.png",
