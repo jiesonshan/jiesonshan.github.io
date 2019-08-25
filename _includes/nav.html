@@ -1,55 +1,85 @@
-{%- comment -%}
-  Include vars:
-  section_items
-{%- endcomment -%}
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
+        </div>
 
-<!-- Nav -->
-<nav id="nav">
-  <ul>
-    {%- assign _pages = site.html_pages | where_exp: "page", "page.hide != true" -%}
-    {%- unless _pages == null -%}
-      {%- assign _pages = _pages | sort: 'order' -%}
-      {%- for _page in _pages -%}
-        {%- assign _title = _page.title | default: _page.layout -%}
-        {%- assign _slug = _title | slugify -%}
-        {%- assign _icon = _page.icon | default: 'fa-link' -%}
-        {%- if _page.icon-style == 'regular' -%}
-          {%- assign _class = 'icon-r' -%}
-        {%- elsif _page.icon-style == 'brands' -%}
-          {%- assign _class = 'icon-b' -%}
-        {%- else -%}
-          {%- assign _class = 'icon' -%}
-        {%- endif -%}
-        {%- comment -%}<!-- page.url (no underscore) is the url of the current page-->{%- endcomment -%}
-        {%- if _page.url == page.url -%}
-          <li><a href="#" id="{{- _slug -}}" class="active">
-            <span class="{{ _class }} {{ _icon }}">{{- _title -}}</span>
-          </a></li>
-        {%- elsif _page.url -%}
-          <li><a href="{{- _page.url | absolute_url -}}" id="{{- _slug -}}-link">
-            <span class="{{ _class }} {{ _icon }}">{{- _title -}}</span>
-          </a></li>
-        {%- else -%}
-          <li><a href="{{- '/' | absolute_url -}}" id="broken-link"><span class="icon fa-unlink">[broken link]</span></a></li>
-        {%- endif -%}
-      {%- endfor -%}
-    {%- endunless -%}
-    {%- assign _sections = include.section_items | where_exp: "section", "section.hide != true" -%}
-    {%- if _pages[0] and _sections[0] -%}<hr>{%- endif -%}
-    {%- unless _sections == null -%}
-      {%- for _sect in _sections -%}
-        {%- assign _title = _sect.title | default: _sect.layout | default: 'Untitled' -%}
-        {%- assign _slug = _title | slugify -%}
-        {%- assign _icon = _sect.icon | default: 'fa-file' -%}
-        {%- if _sect.icon-style == 'regular' -%}
-          {%- assign _class = 'icon-r' -%}
-        {%- elsif _sect.icon-style == 'brands' -%}
-          {%- assign _class = 'icon-b' -%}
-        {%- else -%}
-          {%- assign _class = 'icon' -%}
-        {%- endif -%}
-        <li><a href="#{{- _slug -}}" id="{{- _slug -}}-link" class="scrolly"><span class="{{ _class }} {{ _icon }}">{{- _title -}}</span></a></li>
-      {%- endfor -%}
-    {%- endunless -%}
-  </ul>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{{ site.baseurl }}/">Home</a>
+                    </li>
+                    {% for page in site.pages %}{% if page.title %}
+                    <li>
+                        <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                    </li>
+                    {% endif %}{% endfor %}
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
 </nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
