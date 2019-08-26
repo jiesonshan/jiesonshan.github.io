@@ -18,6 +18,8 @@ tags:
 ```math
 loss = -\frac{1}{m}\sum_{i=0}^m log\frac{e^{W^T_{y_i}} + b_{y_i}}{\sum_{j=1}^N e^{W^T_{j}+b_j}}
 ```
+![softmax](http://latex.codecogs.com/gif.latex?loss=-\\frac{1}{m}\\sum_{i=0}^mlog\\frac{e^{W^T_{y_i}}b_{y_i}}{\\sum_{j=1}^Ne^{W^T_{j}+b_j}})
+
 ![softmax](https://note.youdao.com/yws/api/personal/file/WEB609552c3c1972fbc40642cf3f7c752e2?method=download&shareKey=87d9648040232ac180ce0f5130bba49a)
 
 &#160;&#160;&#160;&#160;softmax 只考虑了是否正确分类，但没有考虑类间距离，Softmax并不要求类内紧凑和类间分离，这一点非常不适合人脸识别任务。所以需要改造Softmax，除了保证可分性外，还要做到特征向量类内尽可能紧凑，类间尽可能分离。
@@ -28,9 +30,11 @@ tf.nn.softmax_cross_entropy_with_logits
 ```math
 L_C = -\frac{1}{2}\sum_{i=1}^m||x_i-C_{y_i}||^2
 ```
+![softmax](http://latex.codecogs.com/gif.latex?L_C=-\\frac{1}{2}\\sum_{i=1}^m||x_i-C_{y_i}||^2)
+
 ![center](https://note.youdao.com/yws/api/personal/file/WEBa45702108fbbc3a07eba23767681bc73?method=download&shareKey=4a45d57af0cd2593c315adfbac1be3c6)
 
-&#160;&#160;&#160;&#160;center loss 考虑到不仅仅是分类要对，而且要求类间有一定的距离。上面的公式中 
+&#160;&#160;&#160;&#160;center loss 考虑到不仅仅是分类要对，而且要求类间有一定的距离。上面的公式中
 `$\large C_{y_i}$`表示某一类的中心,`$x_i$` 表示每个人脸的特征值。作者在softmax loss的基础上加入了`$L_C$`，同时使用参数`$\lambda$`来控制类内距离，整体的损失函数如下：
 ```math
 L = L_S + L_C = -\frac{1}{m}\sum_{i=0}^m log\frac{e^{W^T_{y_i}} + b_{y_i}}{\sum_{j=1}^N e^{W^T_{j}+b_j}} + \frac{1}{2}\sum_{i=1}^m||x_i-C_{y_i}||^2
@@ -53,7 +57,8 @@ def center_loss(features, label, alfa, nrof_classes):
 ```
 
 3、Triplet Loss
-![triplet](https://note.youdao.com/yws/api/personal/sync?method=download&fileId=WEB178d4497e7a1410d86ab55d074c8c2a1&version=3907&cstk=E6WAOi5y)
+
+![triplet](https://note.youdao.com/yws/api/personal/file/WEB178d4497e7a1410d86ab55d074c8c2a1?method=download&shareKey=2e40a3cb957c7adcc6ef75577f974c4e)
 
 &#160;&#160;&#160;&#160;三元组损失函数，三元组由Anchor、Negative、Positive组成，从上图可以看到，triplet loss 就是使同类距离更近，类间更加远离。
 ```math
@@ -89,7 +94,8 @@ def triplet_loss(anchor, positive, negative, alpha):
 
 4、Arcface
 前面的softmax Loss 没有考虑类间距离， center loss 学习类中心，使类内紧凑，但没有类间可分。triplet loss 收敛较慢。因此就产生了sofmax的变形loss，如L-Softmax、SphereFace、Arcface。arcface是直接在角度空间中最大化分类界限，而cosface是在余弦空间中最大化分类界限，角度距离比余弦距离在对角度的影响更加直接。
-![arcface](https://note.youdao.com/yws/api/personal/sync?method=download&fileId=WEB7137d913f307c97ced07c50f96b4f2ef&version=3905&cstk=E6WAOi5y)
+
+![arcface](https://note.youdao.com/yws/api/personal/file/WEB7137d913f307c97ced07c50f96b4f2ef?method=download&shareKey=d572ca0285212f680612e6df0e8e53d7)
 ```math
 arcface = - \frac{1}{N}\sum_{i=1}^Nlog(\frac{e^{s(cos(\theta_{yi}+m))}}{s(cos(\theta_{yi}+m)) + \sum_{j=1, {j} \neq {y_i}}e^{scos(\theta_j)}})
 ```
@@ -150,5 +156,4 @@ def arcface_loss(embedding, labels, out_num, w_init=None, s=64., m=0.45):
 > [6]https://github.com/deepinsight/insightface<br>
 > [7]https://github.com/davidsandberg/facenet<br>
 
-![](http://latex.codecogs.com/gif.latex?\\frac{1}{1+sin(x)})
-
+![](http://latex.codecogs.com/gif.latex?\\frac{1}{1+sin(x)}=)
