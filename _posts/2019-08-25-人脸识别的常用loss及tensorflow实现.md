@@ -150,8 +150,5 @@ def arcface_loss(embedding, labels, out_num, w_init=None, s=64., m=0.45):
 > [6]https://github.com/deepinsight/insightface<br>
 > [7]https://github.com/davidsandberg/facenet<br>
 
- 
-
-
-
+![](http://latex.codecogs.com/gif.latex?\\frac{1}{1+sin(x)})
 
