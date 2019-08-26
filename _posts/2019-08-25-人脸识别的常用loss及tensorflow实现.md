@@ -15,9 +15,10 @@ tags:
 
 1、softmax loss
 
-```math
+$$
 loss = -\frac{1}{m}\sum_{i=0}^m log\frac{e^{W^T_{y_i}} + b_{y_i}}{\sum_{j=1}^N e^{W^T_{j}+b_j}}
-```
+$$
+
 ![softmax](http://latex.codecogs.com/gif.latex?loss=-\\frac{1}{m}\\sum_{i=0}^mlog\\frac{e^{W^T_{y_i}}b_{y_i}}{\\sum_{j=1}^Ne^{W^T_{j}+b_j}})
 
 ![softmax](https://note.youdao.com/yws/api/personal/file/WEB609552c3c1972fbc40642cf3f7c752e2?method=download&shareKey=87d9648040232ac180ce0f5130bba49a)
