@@ -27,6 +27,8 @@ tags:
    
    安装完成后验证是否安装成功
    
+   ![nvidia-smi](https://note.youdao.com/yws/api/personal/file/WEBda77219cf4b1f4242d12dfb69584b86e?method=download&shareKey=e0f04b56c972bb8729cdd3bbd3a81adb)
+   
 3、利用dockerfile建立tf-serving 镜像
    
    `git clone https://github.com/tensorflow/serving.git` 
@@ -69,6 +71,10 @@ tags:
    ```
    
    在Dockerfile文件中修改相应位置
+   
+   ![dockerfile](https://note.youdao.com/yws/api/personal/file/WEB5be206ec835d87b1e4ed41e233ed6d93?method=download&shareKey=af9218ff76fa4247bbb565c65d43a68b)
+   
+   ![bazel](https://note.youdao.com/yws/api/personal/file/WEBbef22ba2ab7425fe73251c0d725fafff?method=download&shareKey=1050e8c7c512d8c7fd5ee0dabc77fe9d)
    
    开始build镜像
    
