@@ -90,12 +90,11 @@ tags:
    ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/libcuda.so.1
    LD_LIBRARY_PATH=/usr/local/cuda/lib64/stubs:${LD_LIBRARY_PATH}
    ```
-   
-   
-   
-   
-   
-   
-   
-   
+#### 模型导出
 
+#### 模型部署
+   
+#### reference
+> [1] https://zhuanlan.zhihu.com/p/23361413
+
+> [2] https://zhuanlan.zhihu.com/p/52096200
