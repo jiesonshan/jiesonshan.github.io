@@ -100,7 +100,7 @@ def triplet_loss(anchor, positive, negative, alpha):
 ![arcface](https://note.youdao.com/yws/api/personal/file/WEB7137d913f307c97ced07c50f96b4f2ef?method=download&shareKey=d572ca0285212f680612e6df0e8e53d7)
 
 $$
-arcface = - \frac{1}{N}\sum_{i=1}^Nlog(\frac{e^{s(cos(\theta_{yi}+m))}}{e^s(cos(\theta_{yi}+m)) + \sum_{j=1, {j} \neq {y_i}}e^{scos(\theta_j)}})
+arcface = - \frac{1}{N}\sum_{i=1}^Nlog(\frac{e^{s(cos(\theta_{yi}+m))}}{e^{s(cos(\theta_{yi}+m))} + \sum_{j=1, {j} \neq {y_i}}e^{scos(\theta_j)}})
 $$
 
 ```
