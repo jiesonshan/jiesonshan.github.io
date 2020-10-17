@@ -15,7 +15,7 @@ tags:
 ####  环境部署（ubuntu16.04）
 tensorflow 2.3
 
-![自己制作docker镜像](https://jiesonshan.github.io/2019/09/12/tf-serving%E9%83%A8%E7%BD%B2%E6%A8%A1%E5%9E%8B/)
+[自己制作docker镜像](https://jiesonshan.github.io/2019/09/12/tf-serving%E9%83%A8%E7%BD%B2%E6%A8%A1%E5%9E%8B/)
 #### 部署
 本次实验采用docker方式部署
 ##### cpu
@@ -385,13 +385,8 @@ print(out)
 ```
 #### reference
 > [1] https://blog.csdn.net/chenguangchun1993/article/details/104971811/
-
 > [2] https://www.tensorflow.org/tfx/serving/serving_basic?hl=zh_cn
-
 > [3] https://blog.csdn.net/zong596568821xp/article/details/99715005
-
 > [4] https://zhuanlan.zhihu.com/p/42905085
-
 > [5] https://blog.csdn.net/u013714645/article/details/81449487
-
 > [6] https://zhuanlan.zhihu.com/p/96917543

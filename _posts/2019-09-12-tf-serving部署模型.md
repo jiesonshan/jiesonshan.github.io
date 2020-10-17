@@ -95,9 +95,8 @@ tags:
 前面讲述了怎么制作一个tensorflow serving 环境的docker镜像，下篇博客介绍部署及调用。由于tensorflow能够直接保存成savemodel格式，
 就不在描述模型导出。
 #### 模型部署
-请移步 ![tensorflow serving 部署及调用](https://jiesonshan.github.io/2020/10/17/tensorflow-Serving%E9%83%A8%E7%BD%B2%E5%8F%8A%E8%B0%83%E7%94%A8/)
+请移步 [tensorflow serving 部署及调用](https://jiesonshan.github.io/2020/10/17/tensorflow-Serving%E9%83%A8%E7%BD%B2%E5%8F%8A%E8%B0%83%E7%94%A8/)
    
 #### reference
 > [1] https://zhuanlan.zhihu.com/p/23361413
-
 > [2] https://zhuanlan.zhihu.com/p/52096200
