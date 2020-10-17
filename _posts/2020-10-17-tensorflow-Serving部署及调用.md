@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      tensorflow-Serving部署及调用.md
+title:      tensorflow-Serving部署及调用
 subtitle:   tensorflow serving
 date:       2020-10-17
 author:     Jieson
