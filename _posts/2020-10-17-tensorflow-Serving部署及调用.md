@@ -4,7 +4,7 @@ title:      tensorflow-Serving部署及调用.md
 subtitle:   tensorflow serving
 date:       2020-10-17
 author:     Jieson
-header-img: img/post-bg-ios9-web.jpg
+header-img: img/post-bg-map.jpg
 catalog: true
 tags:
     - tensorflow
