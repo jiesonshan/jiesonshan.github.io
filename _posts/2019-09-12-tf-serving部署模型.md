@@ -92,8 +92,10 @@ tags:
    ```
 #### 模型导出
 未完，待续...
-
+前面讲述了怎么制作一个tensorflow serving 环境的docker镜像，下篇博客介绍部署及调用。由于tensorflow能够直接保存成savemodel格式，
+就不在描述模型导出。
 #### 模型部署
+请移步 ![tensorflow serving 部署及调用]()
    
 #### reference
 > [1] https://zhuanlan.zhihu.com/p/23361413
